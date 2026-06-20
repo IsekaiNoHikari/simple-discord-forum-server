@@ -1,0 +1,22 @@
+{
+	"devDependencies": {
+		"husky": "^9.1.7",
+		"@commitlint/cli": "^21.0.2",
+		"@commitlint/config-conventional": "^21.0.2",
+		"lint-staged": "^17.0.7",
+		"prettier": "^3.8.3"
+	},
+	"scripts": {
+		"prepare": "husky",
+		"lint-staged": "lint-staged",
+		"verify:commit-range": "sh scripts/verify-commit-range.sh"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,vue,json,md,yml,yaml}": [
+      			"prettier --write"
+    		],
+   		"backend/src/**/*.{java,kt}": [
+      			"./gradlew -p backend spotlessApply"
+    		]
+	}
+}
